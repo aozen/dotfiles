@@ -44,7 +44,7 @@ alias {glog, glog1}="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)
 alias glog2='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
 
 # copy personal access token key (aozen github)
-alias copyptoken='echo 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 | pbcopy'
+alias copyptoken='echo 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 | pbcopy' #this is random generated, useless token. LOL. No security vulnerable (yet)
 
 # copy public ssh key
 alias copykey='command cat ~/.ssh/id_ed25519.pub | pbcopy'
