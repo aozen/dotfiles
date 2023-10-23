@@ -1,6 +1,12 @@
 # Ali`s dotFiles
 
-Some dotfiles configuration
+- Install Oh my Zsh Terminal
+- Download repository to specified path (~/.dotfiles) (if repo already installed this path. Ignore & Continue)
+- Create some folders like Project, Scripts, Screenshots etc
+- Backup & Overwrite => .zprofile, .zshrc files
+- Clone some repositories
+- Setup zsh-autosuggestions plugin
+- Setup powerline fonts for ZSH Agnoster Theme
 
 ## Backup Checklist
 
@@ -11,19 +17,12 @@ Some dotfiles configuration
 
 ## Installation
 
-1. update system // (WIP) depends on linux or mac
-
-2. edit ssh keys and token from .env file
-    ```zsh
-      cp .env.example .env
-    ```
-
-3. `Run Installation` script
-    ```zsh
-      ~/.dotfiles/install.sh
-    ```
+Run `install` script. Assuming exist in `~/.dotfiles`
+```bash
+  ~/.dotfiles/install.sh
+```
 
 ## Additional Steps
-
+- After fresh zsh installation, go to `Profiles`, `Edit Profile`, `Text`. Then activate `Use built-in Powerline glyphs` via checkbox. Otherwise some icons may not display.
 - Install apps manually # List soon
 - Custom Settings # Settings soon
