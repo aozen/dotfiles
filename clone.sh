@@ -1,23 +1,30 @@
 #!/bin/sh
 
-echo "Cloning repositories..."
+# Colors for terminal output
+SUCCESS_COLOR='\033[0;32m'
+ERROR_COLOR='\033[0;31m'
+NO_COLOR='\033[0m'
+TITLE_COLOR='\033[0;33m'
 
+echo "${TITLE_COLOR} Cloning Repositories... ${NO_COLOR}"
+
+# Load environment variables from .env file
 source .env
 
 clone_repository() {
     _repository_url=$1
     _destination=$2
 
-    echo -e "${TITLE_COLOR} \n\n PROCESSING =====> '$_destination' ${NO_COLOR}:"
+    echo "${TITLE_COLOR} \n PROCESSING =====> '$_destination' ${NO_COLOR}:"
 
     if [ ! -d "$_destination" ]; then
         if git clone --quiet "$_repository_url" "$_destination"; then
-            echo -e "${SUCCESS_COLOR} $_destination cloned successfully ${NO_COLOR}"
+            echo "${SUCCESS_COLOR} $_destination cloned successfully ${NO_COLOR}"
         else
-            echo -e "${ERROR_COLOR}Error: Repository cloning failed ${NO_COLOR}"
+            echo "${ERROR_COLOR}Error: Repository cloning failed ${NO_COLOR}"
         fi
     else
-        echo -e "${WARNING_COLOR} Destination directory '$_destination' already exists. Skipping cloning. ${NO_COLOR}"
+        echo "${WARNING_COLOR} Destination directory '$_destination' already exists. Skipping cloning. ${NO_COLOR}"
     fi
 }
 
@@ -36,4 +43,4 @@ clone_repository git@github.com:aozen/repository-design-pattern.git "$PROJECTS_P
 clone_repository git@github.com:aozen/filament-examples.git "$PROJECTS_PATH"/filamentexamples
 clone_repository git@github.com:aozen/IMDBer.git "$PROJECTS_PATH"/imdber
 
-echo "Cloning completed."
+echo "${SUCCESS_COLOR} Cloning completed. ${NO_COLOR}"

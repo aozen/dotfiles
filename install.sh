@@ -1,7 +1,13 @@
 #!/bin/bash
 
-echo "❤️Setting Up Started❤️"
+# Colors for terminal output
+SUCCESS_COLOR='\033[0;32m'
+ERROR_COLOR='\033[0;31m'
+NO_COLOR='\033[0m'
 
+echo -e "${SUCCESS_COLOR} ❤️ Setting Up Started ❤️ ${NO_COLOR}"
+
+# Load environment variables from .env file
 source .env
 
 # Function to prompt for yes/no confirmation
@@ -15,47 +21,42 @@ confirm() {
 }
 
 if ! confirm "If you filled .env file continue. Otherwise we have a problem"; then
-    echo "Skipping Installation. Exiting... Fill .env and comeback..."
+    echo -e "${ERROR_COLOR}Skipping Installation. Exiting... Fill .env and come back...${NO_COLOR}"
     exit 1
 fi
 
-if test ! "$(which omz)"; then
-  /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
-fi
 
+# Check if Oh-My-Zsh is already installed
+if [[ ! -d "$ZSH" && ! -d "$HOME/.oh-my-zsh" ]]; then
+    echo "Installing OMZ"
+    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
+else
+    echo "OMZ is already installed."
+fi
 
 mkdir -p "$DOTFILES_PATH"
 echo 'dotfiles folder created...'
 
-echo 'dotfiles repository is installing...'
+echo 'Cloning dotfiles repository...'
 git clone --quiet "$DOTFILES_SSH_LINK" "$DOTFILES_PATH"
-echo 'dotfiles repository installed successfully...'
+echo -e "${SUCCESS_COLOR}Dotfiles repository cloned successfully${NO_COLOR}"
 
-mkdir -p ~/Projects
-mkdir -p ~/Screenshots
-mkdir -p ~/Personal
-mkdir -p ~/Scripts
-mkdir -p ~/devTools
+mkdir -p ~/Projects ~/Screenshots ~/Personal ~/Scripts ~/devTools
 echo 'Necessary folder are created'
 
 if confirm "Do you want to overwrite .zprofile and .zshrc files?"; then
     echo "Overwriting .zprofile and .zshrc files."
 
     cp ~/.zprofile /tmp/..zprofile
-    echo '.zprofile copied to /tmp/'
-
-    cp ~/.zshrc /tmp/..zshrc
-    echo '.zshrc copied to /tmp/ '
-
     rm -rf ~/.zprofile
     cp "$DOTFILES_PATH"/.zprofile ~/.zprofile
-    echo "$HOME/.zprofile removed"
-    echo "$HOME/.zprofile created from $DOTFILES_PATH/.zprofile"
+    echo -e "${SUCCESS_COLOR} $HOME/.zprofile backup saved. Replaced with the dotfiles version${NO_COLOR}"
 
+
+    cp ~/.zshrc /tmp/..zshrc
     rm -rf ~/.zshrc
     cp "$DOTFILES_PATH"/.zshrc ~/.zshrc
-    echo "$HOME/.zshrc removed"
-    echo "$HOME/.zshrc created from $DOTFILES_PATH/.zshrc"
+    echo -e "${SUCCESS_COLOR} $HOME/.zshrc backup saved. Replaced with the dotfiles version${NO_COLOR}"
 
 else
     echo "Skipping .zprofile and .zshrc files."
@@ -67,28 +68,30 @@ fi
 #chmod +x ~/.dotfiles/ssh.sh
 #~/.dotfiles/ssh.sh
 
+# Make clone.sh executable and run it
 chmod +x "$DOTFILES_PATH"/clone.sh
 "$DOTFILES_PATH"/clone.sh
 
-# Clone additional repositories and install dependencies if needed
-# Example: git clone <REPO_URL> ~/projects/myproject
-# Example: cd ~/projects/myproject && npm install
-
-#TODO: In .zshrc file add plugins=(zsh-autosuggestions) // plugins=(zsh-autosuggestions, git, composer) add useful
-# Right now it was added to .zprofile but brew version. Edit later
-git clone --quiet https://github.com/zsh-users/zsh-autosuggestions "$DOTFILES_PATH"/plugins/zsh-autosuggestions
-echo -e "${SUCCESS_COLOR} zsh-autosuggestions installed ${NO_COLOR}"
+# Clone zsh-autosuggestions plugin
+if ! [[ -d "$DOTFILES_PATH/plugins/zsh-autosuggestions" ]]; then
+    git clone --quiet https://github.com/zsh-users/zsh-autosuggestions "$DOTFILES_PATH/plugins/zsh-autosuggestions"
+fi
+echo -e "${SUCCESS_COLOR} zsh-autosuggestions plugin cloned successfully ${NO_COLOR}"
 
 # Clone powerline fonts repository and run install script
 if ! [[ -d "$DOTFILES_PATH/fonts" ]]; then
-    git clone --quiet https://github.com/powerline/fonts.git "$DOTFILES_PATH"/fonts
+    git clone --quiet https://github.com/powerline/fonts.git "$DOTFILES_PATH/fonts"
     echo -e "${SUCCESS_COLOR} Powerline fonts repository cloned successfully ${NO_COLOR}"
-fi
 
-echo "Installing powerline fonts..."
-cd "$DOTFILES_PATH"/fonts || exit
-./install.sh
-cd - || exit
+    echo "Installing powerline fonts..."
+    cd "$DOTFILES_PATH/fonts" || exit
+    ./install.sh
+    cd - || exit
+fi
 echo -e "${SUCCESS_COLOR} Powerline fonts installed successfully ${NO_COLOR}"
 
-echo "Setup completed successfully."
+# Clone additional repositories and install dependencies if needed
+# Example: git clone <REPO_URL> ~/Projects/lelele
+# Example: cd ~/Projects/lelele && npm install
+
+echo -e "${SUCCESS_COLOR} ❤️ Installation completed successfully ❤️ ${NO_COLOR}"
