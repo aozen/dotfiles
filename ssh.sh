@@ -8,4 +8,7 @@ echo "Configuring SSH key and tokens for GitHub... "
 # Alternative ssh keys (TODO: add .env.examples)
 # ssh-add ~/.ssh/custom_key_name
 
+# git remote set-url origin https://<token>@github.com/<git_url>
+# token usage
+
 echo "Configuration completed"
