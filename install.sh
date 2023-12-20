@@ -36,21 +36,11 @@ else
     echo -e "${WARNING_COLOR}ZSH is already installed${NO_COLOR}"
 fi
 
-# Change Default Shell
-echo_title "Change Default Shell"
-current_user=$(whoami)
-sudo chsh -s $(which zsh) $current_user
-if [ $? -eq 0 ]; then
-    echo -e "${SUCCESS_COLOR}Default shell set to Zsh${NO_COLOR}"
-else
-    echo -e "${ERROR_COLOR}Failed to set default shell to Zsh. Change it manually${NO_COLOR}"
-fi
-
 # Install Oh-My-Zsh
 echo_title "OH MY ZSH"
 if [[ ! -d "$ZSH" && ! -d "$HOME/.oh-my-zsh" ]]; then
     echo "OMZ is not installed. Installing OMZ"
-    /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)"
+    /bin/sh -c -y "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)" &> /dev/null
     echo -e "${SUCCESS_COLOR}OMZ is installed${NO_COLOR}"
 else
     echo -e "${WARNING_COLOR}OMZ is already installed${NO_COLOR}"

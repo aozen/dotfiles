@@ -12,7 +12,7 @@ HIST_STAMPS="dd/mm/yyyy"
 # this is opens a gate for plugins
 ZSH_CUSTOM=$DOTFILES
 
-plugins=(git laravel composer zsh-autosuggestions)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 # Set zsh-autosuggestions color
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'

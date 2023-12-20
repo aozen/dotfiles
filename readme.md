@@ -30,6 +30,7 @@ Run `install` script. Assuming exist in `~/.dotfiles`
 
 - After fresh zsh installation, go to `Profiles`, `Edit Profile`, `Text`. Then activate `Use built-in Powerline glyphs` via checkbox. Otherwise some icons may not display.
 - Install apps manually # List soon
+  - If default terminal didnt changed => `chsh -s $(which zsh)`
 - Custom Settings # Settings soon
 
 ## Remove ZSH
