@@ -17,6 +17,7 @@ if [ ! -d "$DOTFILES_PATH" ]; then
     git clone --quiet "$DOTFILES_SSH_LINK" "$DOTFILES_PATH"
     echo -e "${SUCCESS_COLOR}Dotfiles repository cloned successfully${NO_COLOR}"
     cd $DOTFILES_PATH
+    cp .env_example .env
 else
     echo -e "${WARNING_COLOR}Dotfiles repository already exists at $DOTFILES_PATH${NO_COLOR}"
     cd $DOTFILES_PATH
