@@ -1,12 +1,9 @@
 #!/bin/bash
 
-source ./env
+source ./.env
 source ./helper.sh
 
 echo -e "${TITLE_COLOR}Cloning Repositories${NO_COLOR}"
-
-# Load environment variables from .env file
-source .env
 
 clone_repository() {
     _repository_url=$1

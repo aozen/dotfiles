@@ -22,8 +22,10 @@ if [ ! -d "$DOTFILES_PATH" ]; then
     echo 'Cloning dotfiles repository'
     git clone --quiet "$DOTFILES_SSH_LINK" "$DOTFILES_PATH"
     echo -e "${SUCCESS_COLOR}Dotfiles repository cloned successfully${NO_COLOR}"
+    cd $DOTFILES_PATH
 else
     echo -e "${WARNING_COLOR}Dotfiles repository already exists at $DOTFILES_PATH${NO_COLOR}"
+    cd $DOTFILES_PATH
 fi
 
 # Install ZSH
