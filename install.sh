@@ -43,7 +43,7 @@ fi
 echo_title "OH MY ZSH"
 if [[ ! -d "$ZSH" && ! -d "$HOME/.oh-my-zsh" ]]; then
     echo "OMZ is not installed. Installing OMZ"
-    /bin/sh -c -y "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)" &> /dev/null
+    yes | /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)" > /dev/null 2>&1
     echo -e "${SUCCESS_COLOR}OMZ is installed${NO_COLOR}"
 else
     echo -e "${WARNING_COLOR}OMZ is already installed${NO_COLOR}"
