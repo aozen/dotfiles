@@ -105,6 +105,11 @@ else
     echo -e "${WARNING_COLOR}Go is already installed${NO_COLOR}"
 fi
 
+# Install Docker
+echo_title "INSTALL DOCKER"
+chmod +x "$DOTFILES_PATH"/installations/docker.sh
+"$DOTFILES_PATH/installations/docker.sh"
+
 # Handle Fonts
 echo_title "FONTS"
 if ! [[ -d "$DOTFILES_PATH/fonts" ]]; then
