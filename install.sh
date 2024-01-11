@@ -69,16 +69,11 @@ fi
 
 # Override .zshrc
 echo_title ".ZSHRC"
-if confirm "Do you want to overwrite .zshrc file?"; then
-    cp ~/.zshrc /tmp/..zshrc
-    rm -rf ~/.zshrc
-    cp "$DOTFILES_PATH"/.zshrc ~/.zshrc
-    source ~/.zshrc
-    echo -e "${SUCCESS_COLOR}.zshrc backup saved to /tmp/..zshrc${NO_COLOR}"
-    echo -e "${SUCCESS_COLOR}.zshrc overwritten${NO_COLOR}"
-else
-    echo -e "${SUCCESS_COLOR}Skipping overwrite .zshrc${NO_COLOR}"
-fi
+cp ~/.zshrc /tmp/_zshrc
+echo -e "${SUCCESS_COLOR}.zshrc backup saved to /tmp/_zshrc${NO_COLOR}"
+rm -rf ~/.zshrc
+cp "$DOTFILES_PATH"/.zshrc ~/.zshrc
+echo -e "${SUCCESS_COLOR}.zshrc overwritten${NO_COLOR}"
 
 # Create Folders
 echo_title "CREATE HOME FOLDERS"
