@@ -4,6 +4,7 @@ source ./helper.sh
 
 if command -v docker &> /dev/null; then
     echo -e "${WARNING_COLOR}Docker is already installed${NO_COLOR}"
+    echo "$(docker -v)"
     exit 0
 fi
 
@@ -28,6 +29,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 if command -v docker &> /dev/null; then
     echo -e "${SUCCESS_COLOR}Docker installed successfully${NO_COLOR}"
+    echo "$(docker -v)"
     exit 0
 else
     echo -e "${ERROR_COLOR}Failed to install Docker${NO_COLOR}"

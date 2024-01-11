@@ -8,3 +8,5 @@ if ! command -v zsh &> /dev/null; then
 else
     echo -e "${WARNING_COLOR}ZSH is already installed${NO_COLOR}"
 fi
+
+echo "$(zsh --version)"

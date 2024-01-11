@@ -5,6 +5,7 @@ source ./helper.sh
 # Check if Go is already installed
 if command -v go &> /dev/null; then
     echo -e "${WARNING_COLOR}Go is already installed${NO_COLOR}"
+    echo "$(go version)"
     exit 0
 fi
 
@@ -19,6 +20,7 @@ cd - > /dev/null
 # Check if Go installation is successful
 if command -v go &> /dev/null; then
     echo -e "${SUCCESS_COLOR}Go installed successfully${NO_COLOR}"
+    echo "$(go version)"
     exit 0
 else
     echo -e "${ERROR_COLOR}Failed to install Go${NO_COLOR}"
