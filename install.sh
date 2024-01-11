@@ -97,16 +97,8 @@ chmod +x "$DOTFILES_PATH"/installations/docker.sh
 
 # Handle Fonts
 echo_title "FONTS"
-if ! [[ -d "$DOTFILES_PATH/fonts" ]]; then
-    git clone --quiet https://github.com/powerline/fonts.git "$DOTFILES_PATH/fonts"
-    echo -e "${SUCCESS_COLOR}Powerline fonts repository cloned successfully${NO_COLOR}"
-
-    echo "Installing powerline fonts..."
-    cd "$DOTFILES_PATH/fonts" || exit
-    ./install.sh > /dev/null 2>&1
-    cd - || exit
-fi
-echo -e "${SUCCESS_COLOR}Powerline fonts installed successfully${NO_COLOR}"
+chmod +x "$DOTFILES_PATH"/installations/font.sh
+"$DOTFILES_PATH/installations/font.sh"
 
 # Clone additional repositories and install dependencies if needed
 # Example: git clone <REPO_URL> ~/Projects/lelele
