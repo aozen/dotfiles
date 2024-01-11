@@ -36,13 +36,8 @@ chmod +x "$DOTFILES_PATH"/installations/zsh.sh
 
 # Install Oh-My-Zsh
 echo_title "OH MY ZSH"
-if [[ ! -d "$ZSH" && ! -d "$HOME/.oh-my-zsh" ]]; then
-    echo "OMZ is not installed. Installing OMZ"
-    yes | /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/HEAD/tools/install.sh)" > /dev/null 2>&1
-    echo -e "${SUCCESS_COLOR}OMZ is installed${NO_COLOR}"
-else
-    echo -e "${WARNING_COLOR}OMZ is already installed${NO_COLOR}"
-fi
+chmod +x "$DOTFILES_PATH"/installations/oh-my-zsh.sh
+"$DOTFILES_PATH/installations/oh-my-zsh.sh"
 
 # Clone zsh-autosuggestions plugin
 echo_title "ZSH AUTO SUGGESTION"
