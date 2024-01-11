@@ -73,6 +73,7 @@ if confirm "Do you want to overwrite .zshrc file?"; then
     cp ~/.zshrc /tmp/..zshrc
     rm -rf ~/.zshrc
     cp "$DOTFILES_PATH"/.zshrc ~/.zshrc
+    source ~/.zshrc
     echo -e "${SUCCESS_COLOR}.zshrc backup saved to /tmp/..zshrc${NO_COLOR}"
     echo -e "${SUCCESS_COLOR}.zshrc overwritten${NO_COLOR}"
 else
@@ -81,13 +82,28 @@ fi
 
 # Create Folders
 echo_title "CREATE HOME FOLDERS"
-mkdir -p $HOME/Projects $HOME/Screenshots $HOME/Personal $HOME/Scripts $HOME/devTools $HOME/devManage $HOME/sqlBackups
+mkdir -p $HOME/Projects $HOME/Screenshots $HOME/Personal $HOME/Scripts $HOME/devTools $HOME/devManage $HOME/sqlBackups $HOME/go
 echo -e "${SUCCESS_COLOR}Necessary folders are created${NO_COLOR}"
 
 # Clone Projects
 echo_title "CLONE PROJECTS"
 chmod +x "$DOTFILES_PATH"/clone.sh
 "$DOTFILES_PATH/clone.sh"
+
+
+# Install Go
+echo_title "INSTALL GO"
+if ! command -v go &> /dev/null; then
+    echo "Downloading Go..."
+    cd /tmp/
+    wget -q https://golang.org/dl/go1.21.5.linux-amd64.tar.gz && echo "Go downloaded"
+    sudo tar -C /usr/local -xzf go1.21.5.linux-amd64.tar.gz > /dev/null 2>&1 && echo "Go installed"
+    mkdir -p $HOME/go/bin $HOME/go/pkg $HOME/go/src
+    
+    cd - > /dev/null
+else
+    echo -e "${WARNING_COLOR}Go is already installed${NO_COLOR}"
+fi
 
 # Handle Fonts
 echo_title "FONTS"
