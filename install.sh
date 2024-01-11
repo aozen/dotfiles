@@ -71,6 +71,11 @@ echo_title "INSTALL DOCKER"
 chmod +x "$DOTFILES_PATH"/installations/docker.sh
 "$DOTFILES_PATH/installations/docker.sh"
 
+# Install Nodejs & Npm
+echo_title "INSTALL NODEJS & NPM"
+chmod +x "$DOTFILES_PATH"/installations/nodejs.sh
+"$DOTFILES_PATH/installations/nodejs.sh"
+
 # Handle Fonts
 echo_title "FONTS"
 chmod +x "$DOTFILES_PATH"/installations/font.sh
