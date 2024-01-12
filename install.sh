@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "${SUCCESS_COLOR}❤️Setting Up Started ❤️${NO_COLOR}\n"
+echo -e "${SUCCESS_COLOR}❤️ Setting Up Started ❤️ ${NO_COLOR}\n"
 
 # Load environment variables from .env file
 source ./.env
@@ -9,36 +9,10 @@ source ./helper.sh
 # Request sudo to use further
 sudo -v
 
-cd $DOTFILES_PATH
-
 # Check env
-if ! confirm "If you filled .env file continue. Otherwise we have a problem"; then
+if ! confirm "Are you in the $DOTFILES_PATH? Also if you filled .env file continue. Otherwise we have a problem"; then
     echo -e "${ERROR_COLOR}Skipping Installation. Exiting... Fill .env and come back...${NO_COLOR}"
     exit 1
-fi
-
-# Update first
-echo "APT UPDATE STARTED"
-sudo apt-get update > /dev/null 2>&1
-echo "APT UPDATE END"
-
-# Install GIT
-echo_title "INSTALL GIT"
-chmod +x "$DOTFILES_PATH"/installations/git.sh
-"$DOTFILES_PATH/installations/git.sh"
-
-# Clone Dotfile
-echo_title "CLONING DOTFILE"
-if [ ! -d "$DOTFILES_PATH" ]; then
-    mkdir -p "$DOTFILES_PATH"
-    echo 'Cloning dotfiles repository'
-    git clone --quiet "$DOTFILES_SSH_LINK" "$DOTFILES_PATH"
-    echo -e "${SUCCESS_COLOR}Dotfiles repository cloned successfully${NO_COLOR}"
-    cd $DOTFILES_PATH
-    cp .env_example .env
-else
-    echo -e "${WARNING_COLOR}Dotfiles repository already exists at $DOTFILES_PATH${NO_COLOR}"
-    cd $DOTFILES_PATH
 fi
 
 # Create Folders
@@ -46,85 +20,75 @@ echo_title "CREATE HOME FOLDERS"
 mkdir -p $HOME/Projects $HOME/Screenshots $HOME/Personal $HOME/Scripts $HOME/devTools $HOME/devManage $HOME/sqlBackups $HOME/go
 echo -e "${SUCCESS_COLOR}Necessary folders are created${NO_COLOR}"
 
-# Install ZSH
-echo_title "ZSH"
-chmod +x "$DOTFILES_PATH"/installations/zsh.sh
-"$DOTFILES_PATH/installations/zsh.sh"
+# GIT
+echo_title "INSTALL GIT"
+chmod +x ./installations/git.sh && ./installations/git.sh
 
-# Install Oh-My-Zsh
-echo_title "OH MY ZSH"
-chmod +x "$DOTFILES_PATH"/installations/oh-my-zsh.sh
-"$DOTFILES_PATH/installations/oh-my-zsh.sh"
+# Clone
+echo_title "CLONE PROJECTS"
+chmod +x ./clone.sh && ./clone.sh
 
-# Zsh Plugins
-chmod +x "$DOTFILES_PATH"/installations/zsh-plugins.sh
-"$DOTFILES_PATH/installations/zsh-plugins.sh"
+# ZSH
+echo_title "INSTALL ZSH"
+chmod +x ./installations/zsh.sh && ./installations/zsh.sh
 
-# Override .zshrc
+# OH-MY-ZSH
+echo_title "INSTALL Oh-My-Zsh"
+chmod +x ./installations/oh-my-zsh.sh && ./installations/oh-my-zsh.sh
+
+# ZSH PLUGINS
+chmod +x ./installations/zsh-plugins.sh && ./installations/zsh-plugins.sh
+
+# ZSHRC
 echo_title ".ZSHRC"
 cp ~/.zshrc /tmp/_zshrc
 echo -e "${SUCCESS_COLOR}.zshrc backup saved to /tmp/_zshrc${NO_COLOR}"
 rm -rf ~/.zshrc
-cp "$DOTFILES_PATH"/.zshrc ~/.zshrc
+cp .zshrc ~/.zshrc
 echo -e "${SUCCESS_COLOR}.zshrc overwritten${NO_COLOR}"
 
-# Clone Projects
-echo_title "CLONE PROJECTS"
-chmod +x "$DOTFILES_PATH"/clone.sh
-"$DOTFILES_PATH/clone.sh"
-
-# Install Docker
+# DOCKER
 echo_title "INSTALL DOCKER"
-chmod +x "$DOTFILES_PATH"/installations/docker.sh
-"$DOTFILES_PATH/installations/docker.sh"
+chmod +x ./installations/docker.sh && ./installations/docker.sh
 
-# Install Nodejs & Npm
+# NODEJS & NPM
 echo_title "INSTALL NODEJS & NPM"
-chmod +x "$DOTFILES_PATH"/installations/nodejs.sh
-"$DOTFILES_PATH/installations/nodejs.sh"
+chmod +x ./installations/nodejs.sh && ./installations/nodejs.sh
 
-# Install MongoDB
+# MONGODB
 echo_title "INSTALL MONGODB"
-chmod +x "$DOTFILES_PATH"/installations/mongodb.sh
-"$DOTFILES_PATH/installations/mongodb.sh"
+chmod +x ./installations/mongodb.sh && ./installations/mongodb.sh
 
-# Install Go
+# GO
 echo_title "INSTALL GO"
-chmod +x "$DOTFILES_PATH"/installations/go.sh
-"$DOTFILES_PATH/installations/go.sh"
+chmod +x ./installations/go.sh && ./installations/go.sh
 
-# Install Vscode
-echo_title "VSCODE"
-chmod +x "$DOTFILES_PATH"/installations/vscode.sh
-"$DOTFILES_PATH/installations/vscode.sh"
+# VSCODE
+echo_title "INSTALL VSCODE"
+chmod +x ./installations/vscode.sh && ./installations/vscode.sh
 
-# Install Guake
+# GUAKE
 echo_title "INSTALL GUAKE"
-chmod +x "$DOTFILES_PATH"/installations/guake.sh
-"$DOTFILES_PATH/installations/guake.sh"
+chmod +x ./installations/guake.sh && ./installations/guake.sh
 
-# Install Postman
+# POSTMAN
 echo_title "INSTALL POSTMAN"
-chmod +x "$DOTFILES_PATH"/installations/postman.sh
-"$DOTFILES_PATH/installations/postman.sh"
+chmod +x ./installations/postman.sh && ./installations/postman.sh
 
-# Install Slack
+# SLACK
 echo_title "INSTALL SLACK"
-chmod +x "$DOTFILES_PATH"/installations/slack.sh
-"$DOTFILES_PATH/installations/slack.sh"
+chmod +x ./installations/slack.sh && ./installations/slack.sh
 
-# Install Discord
+# DISCORD
 echo_title "INSTALL DISCORD"
-chmod +x "$DOTFILES_PATH"/installations/discord.sh
-"$DOTFILES_PATH/installations/discord.sh"
+chmod +x ./installations/discord.sh && ./installations/discord.sh
 
-# Install Fonts
-echo_title "FONTS"
-chmod +x "$DOTFILES_PATH"/installations/font.sh
-"$DOTFILES_PATH/installations/font.sh"
+# FONTS
+echo_title "INSTALL FONTS"
+chmod +x ./installations/font.sh && ./installations/font.sh
 
 # Clone additional repositories and install dependencies if needed
 # Example: git clone <REPO_URL> ~/Projects/lelele
 # Example: cd ~/Projects/lelele && npm install
 
-echo -e "\n${SUCCESS_COLOR}❤️Installation completed successfully❤️${NO_COLOR}"
+echo -e "\n${SUCCESS_COLOR}❤️ Installation completed successfully ❤️${NO_COLOR}"
