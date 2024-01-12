@@ -11,6 +11,11 @@ sudo -v
 
 cd $DOTFILES_PATH
 
+# Install GIT
+echo_title "INSTALL GIT"
+chmod +x "$DOTFILES_PATH"/installations/git.sh
+"$DOTFILES_PATH/installations/git.sh"
+
 # Clone Dotfile
 echo_title "CLONING DOTFILE"
 if [ ! -d "$DOTFILES_PATH" ]; then
