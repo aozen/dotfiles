@@ -23,6 +23,5 @@ if command -v guake &> /dev/null; then
     exit 0
 else
     echo -e "${ERROR_COLOR}Failed to install Guake Terminal${NO_COLOR}"
-    echo $(guake --version | awk '/Guake Terminal/{print $3}')
     exit 1
 fi
