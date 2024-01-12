@@ -11,8 +11,16 @@ sudo -v
 
 cd $DOTFILES_PATH
 
+# Check env
+if ! confirm "If you filled .env file continue. Otherwise we have a problem"; then
+    echo -e "${ERROR_COLOR}Skipping Installation. Exiting... Fill .env and come back...${NO_COLOR}"
+    exit 1
+fi
+
 # Update first
+echo "APT UPDATE STARTED"
 sudo apt-get update > /dev/null 2>&1
+echo "APT UPDATE END"
 
 # Install GIT
 echo_title "INSTALL GIT"
@@ -31,12 +39,6 @@ if [ ! -d "$DOTFILES_PATH" ]; then
 else
     echo -e "${WARNING_COLOR}Dotfiles repository already exists at $DOTFILES_PATH${NO_COLOR}"
     cd $DOTFILES_PATH
-fi
-
-# Check env
-if ! confirm "If you filled .env file continue. Otherwise we have a problem"; then
-    echo -e "${ERROR_COLOR}Skipping Installation. Exiting... Fill .env and come back...${NO_COLOR}"
-    exit 1
 fi
 
 # Install ZSH
