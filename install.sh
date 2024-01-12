@@ -108,6 +108,11 @@ echo_title "INSTALL POSTMAN"
 chmod +x "$DOTFILES_PATH"/installations/postman.sh
 "$DOTFILES_PATH/installations/postman.sh"
 
+# Install Slack
+echo_title "INSTALL SLACK"
+chmod +x "$DOTFILES_PATH"/installations/slack.sh
+"$DOTFILES_PATH/installations/slack.sh"
+
 # Install Fonts
 echo_title "FONTS"
 chmod +x "$DOTFILES_PATH"/installations/font.sh
