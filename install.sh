@@ -96,6 +96,10 @@ echo_title "INSTALL POSTMAN"
 chmod +x "$DOTFILES_PATH"/installations/postman.sh
 "$DOTFILES_PATH/installations/postman.sh"
 
+echo_title "VSCODE"
+chmod +x "$DOTFILES_PATH"/installations/vscode.sh
+"$DOTFILES_PATH/installations/vscode.sh"
+
 # Handle Fonts
 echo_title "FONTS"
 chmod +x "$DOTFILES_PATH"/installations/font.sh
