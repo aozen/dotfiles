@@ -11,6 +11,9 @@ sudo -v
 
 cd $DOTFILES_PATH
 
+# Update first
+sudo apt-get update > /dev/null 2>&1
+
 # Install GIT
 echo_title "INSTALL GIT"
 chmod +x "$DOTFILES_PATH"/installations/git.sh
