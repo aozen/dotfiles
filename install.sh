@@ -9,6 +9,8 @@ source ./helper.sh
 # Request sudo to use further
 sudo -v
 
+cd $DOTFILES_PATH
+
 # Clone Dotfile
 echo_title "CLONING DOTFILE"
 if [ ! -d "$DOTFILES_PATH" ]; then
@@ -80,6 +82,10 @@ chmod +x "$DOTFILES_PATH"/installations/nodejs.sh
 echo_title "INSTALL MONGODB"
 chmod +x "$DOTFILES_PATH"/installations/mongodb.sh
 "$DOTFILES_PATH/installations/mongodb.sh"
+
+echo_title "INSTALL GUAKE"
+chmod +x "$DOTFILES_PATH"/installations/guake.sh
+"$DOTFILES_PATH/installations/guake.sh"
 
 # Handle Fonts
 echo_title "FONTS"
