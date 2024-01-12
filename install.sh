@@ -87,6 +87,10 @@ echo_title "INSTALL GUAKE"
 chmod +x "$DOTFILES_PATH"/installations/guake.sh
 "$DOTFILES_PATH/installations/guake.sh"
 
+echo_title "INSTALL POSTMAN"
+chmod +x "$DOTFILES_PATH"/installations/postman.sh
+"$DOTFILES_PATH/installations/postman.sh"
+
 # Handle Fonts
 echo_title "FONTS"
 chmod +x "$DOTFILES_PATH"/installations/font.sh
