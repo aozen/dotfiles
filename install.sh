@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "${SUCCESS_COLOR}❤️ Setting Up Started ❤️${NO_COLOR}\n"
+echo -e "${SUCCESS_COLOR}❤️Setting Up Started ❤️${NO_COLOR}\n"
 
 # Load environment variables from .env file
 source ./.env
@@ -41,6 +41,11 @@ else
     cd $DOTFILES_PATH
 fi
 
+# Create Folders
+echo_title "CREATE HOME FOLDERS"
+mkdir -p $HOME/Projects $HOME/Screenshots $HOME/Personal $HOME/Scripts $HOME/devTools $HOME/devManage $HOME/sqlBackups $HOME/go
+echo -e "${SUCCESS_COLOR}Necessary folders are created${NO_COLOR}"
+
 # Install ZSH
 echo_title "ZSH"
 chmod +x "$DOTFILES_PATH"/installations/zsh.sh
@@ -63,20 +68,10 @@ rm -rf ~/.zshrc
 cp "$DOTFILES_PATH"/.zshrc ~/.zshrc
 echo -e "${SUCCESS_COLOR}.zshrc overwritten${NO_COLOR}"
 
-# Create Folders
-echo_title "CREATE HOME FOLDERS"
-mkdir -p $HOME/Projects $HOME/Screenshots $HOME/Personal $HOME/Scripts $HOME/devTools $HOME/devManage $HOME/sqlBackups $HOME/go
-echo -e "${SUCCESS_COLOR}Necessary folders are created${NO_COLOR}"
-
 # Clone Projects
 echo_title "CLONE PROJECTS"
 chmod +x "$DOTFILES_PATH"/clone.sh
 "$DOTFILES_PATH/clone.sh"
-
-# Install Go
-echo_title "INSTALL GO"
-chmod +x "$DOTFILES_PATH"/installations/go.sh
-"$DOTFILES_PATH/installations/go.sh"
 
 # Install Docker
 echo_title "INSTALL DOCKER"
@@ -93,19 +88,27 @@ echo_title "INSTALL MONGODB"
 chmod +x "$DOTFILES_PATH"/installations/mongodb.sh
 "$DOTFILES_PATH/installations/mongodb.sh"
 
-echo_title "INSTALL GUAKE"
-chmod +x "$DOTFILES_PATH"/installations/guake.sh
-"$DOTFILES_PATH/installations/guake.sh"
+# Install Go
+echo_title "INSTALL GO"
+chmod +x "$DOTFILES_PATH"/installations/go.sh
+"$DOTFILES_PATH/installations/go.sh"
 
-echo_title "INSTALL POSTMAN"
-chmod +x "$DOTFILES_PATH"/installations/postman.sh
-"$DOTFILES_PATH/installations/postman.sh"
-
+# Install Vscode
 echo_title "VSCODE"
 chmod +x "$DOTFILES_PATH"/installations/vscode.sh
 "$DOTFILES_PATH/installations/vscode.sh"
 
-# Handle Fonts
+# Install Guake
+echo_title "INSTALL GUAKE"
+chmod +x "$DOTFILES_PATH"/installations/guake.sh
+"$DOTFILES_PATH/installations/guake.sh"
+
+# Install Postman
+echo_title "INSTALL POSTMAN"
+chmod +x "$DOTFILES_PATH"/installations/postman.sh
+"$DOTFILES_PATH/installations/postman.sh"
+
+# Install Fonts
 echo_title "FONTS"
 chmod +x "$DOTFILES_PATH"/installations/font.sh
 "$DOTFILES_PATH/installations/font.sh"
@@ -114,4 +117,4 @@ chmod +x "$DOTFILES_PATH"/installations/font.sh
 # Example: git clone <REPO_URL> ~/Projects/lelele
 # Example: cd ~/Projects/lelele && npm install
 
-echo -e "\n${SUCCESS_COLOR}❤️ Installation completed successfully ❤️${NO_COLOR}"
+echo -e "\n${SUCCESS_COLOR}❤️Installation completed successfully❤️${NO_COLOR}"
