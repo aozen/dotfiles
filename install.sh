@@ -29,15 +29,7 @@ echo_title "CLONE PROJECTS"
 chmod +x ./clone.sh && ./clone.sh
 
 # ZSH
-echo_title "INSTALL ZSH"
 chmod +x ./installations/zsh.sh && ./installations/zsh.sh
-
-# OH-MY-ZSH
-echo_title "INSTALL Oh-My-Zsh"
-chmod +x ./installations/oh-my-zsh.sh && ./installations/oh-my-zsh.sh
-
-# ZSH PLUGINS
-chmod +x ./installations/zsh-plugins.sh && ./installations/zsh-plugins.sh
 
 # ZSHRC
 echo_title ".ZSHRC"
