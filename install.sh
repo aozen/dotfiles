@@ -32,6 +32,9 @@ chmod +x ./installations/zsh.sh && ./installations/zsh.sh
 # DOCKER
 chmod +x ./installations/docker.sh && ./installations/docker.sh
 
+# REDIS
+chmod +x ./installations/redis.sh && ./installations/redis.sh
+
 # NODEJS & NPM
 chmod +x ./installations/nodejs.sh && ./installations/nodejs.sh
 
