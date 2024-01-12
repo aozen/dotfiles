@@ -141,6 +141,7 @@ alias vhosts='sudo nano /etc/apache2/extra/httpd-vhosts.conf'
 alias {ip, ip_e}="curl ipecho.net/plain; echo"
 alias ip_i="ipconfig getifaddr en0"
 alias pingbomb='ping -c 5 google.com'
+alias checkport='sudo lsof -i'
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *END* NETWORK
