@@ -3,6 +3,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "CLONE PROJECTS"
+
 echo -e "${TITLE_COLOR}Cloning Repositories${NO_COLOR}"
 
 clone_repository() {

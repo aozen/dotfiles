@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL GIT"
+
 if command -v git &> /dev/null; then
     echo -e "${WARNING_COLOR}Git is already installed${NO_COLOR}"
     echo "$(git --version)"

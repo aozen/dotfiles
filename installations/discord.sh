@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL DISCORD"
+
 if command -v discord &> /dev/null; then
     echo -e "${WARNING_COLOR}Discord is already installed${NO_COLOR}"
     echo "Discord Version: $(snap info discord | grep installed | awk '{print $2}')"

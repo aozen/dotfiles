@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL DOCKER"
+
 if command -v docker &> /dev/null; then
     echo -e "${WARNING_COLOR}Docker is already installed${NO_COLOR}"
     echo "$(docker -v)"

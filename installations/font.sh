@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL FONTS"
+
 if [[ -d "$DOTFILES_PATH/fonts" ]]; then
     echo -e "${WARNING_COLOR}Powerline fonts are already installed${NO_COLOR}"
     exit 0

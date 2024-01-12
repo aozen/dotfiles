@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL GUAKE"
+
 # Check if Guake Terminal is already installed
 if command -v guake &> /dev/null; then
     echo -e "${WARNING_COLOR}Guake Terminal is already installed${NO_COLOR}"

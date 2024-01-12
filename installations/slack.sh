@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL SLACK"
+
 if command -v slack &> /dev/null; then
     echo -e "${WARNING_COLOR}Slack is already installed${NO_COLOR}"
     echo "Slack Version: $(snap info slack | grep installed | awk '{print $2}')"

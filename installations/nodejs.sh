@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL NODEJS & NPM"
+
 if command -v node &> /dev/null; then
     echo -e "${WARNING_COLOR}Node.js is already installed${NO_COLOR}"
 else

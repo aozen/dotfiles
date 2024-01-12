@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL VSCODE"
+
 if command -v code &> /dev/null; then
     echo -e "${WARNING_COLOR}Visual Studio Code is already installed${NO_COLOR}"
     echo "$(code --version | awk 'NR==1{print $1}')"

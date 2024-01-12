@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL POSTMAN"
+
 if command -v postman &> /dev/null; then
     echo -e "${WARNING_COLOR}Postman is already installed${NO_COLOR}"
     echo "Postman Version: $(snap info postman | grep installed | awk '{print $2}')"

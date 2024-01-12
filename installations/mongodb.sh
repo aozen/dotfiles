@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL MONGODB"
+
 if command -v mongod &> /dev/null; then
     echo -e "${WARNING_COLOR}MongoDB is already installed${NO_COLOR}"
     echo "Mongod version: $(mongod --version | awk '/db version/{print $3}')"

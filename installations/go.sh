@@ -2,6 +2,8 @@
 source ./.env
 source ./helper.sh
 
+echo_title "INSTALL GO"
+
 if command -v go &> /dev/null; then
     echo -e "${WARNING_COLOR}Go is already installed${NO_COLOR}"
     echo "$(go version)"

@@ -40,3 +40,11 @@ if ! [[ -d "$DOTFILES_PATH/plugins/zsh-syntax-highlighting" ]]; then
 else
     echo -e "${WARNING_COLOR}zsh-syntax-highlighting is already installed${NO_COLOR}"
 fi
+
+# ZSHRC
+echo_title ".ZSHRC"
+cp ~/.zshrc /tmp/_zshrc
+echo -e "${SUCCESS_COLOR}.zshrc backup saved to /tmp/_zshrc${NO_COLOR}"
+rm -rf ~/.zshrc
+cp .zshrc ~/.zshrc
+echo -e "${SUCCESS_COLOR}.zshrc overwritten${NO_COLOR}"
