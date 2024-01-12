@@ -76,6 +76,11 @@ echo_title "INSTALL NODEJS & NPM"
 chmod +x "$DOTFILES_PATH"/installations/nodejs.sh
 "$DOTFILES_PATH/installations/nodejs.sh"
 
+# Install MongoDB
+echo_title "INSTALL MONGODB"
+chmod +x "$DOTFILES_PATH"/installations/mongodb.sh
+"$DOTFILES_PATH/installations/mongodb.sh"
+
 # Handle Fonts
 echo_title "FONTS"
 chmod +x "$DOTFILES_PATH"/installations/font.sh
