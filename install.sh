@@ -113,6 +113,11 @@ echo_title "INSTALL SLACK"
 chmod +x "$DOTFILES_PATH"/installations/slack.sh
 "$DOTFILES_PATH/installations/slack.sh"
 
+# Install Discord
+echo_title "INSTALL DISCORD"
+chmod +x "$DOTFILES_PATH"/installations/discord.sh
+"$DOTFILES_PATH/installations/discord.sh"
+
 # Install Fonts
 echo_title "FONTS"
 chmod +x "$DOTFILES_PATH"/installations/font.sh
