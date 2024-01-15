@@ -26,18 +26,18 @@ clone_repository() {
 }
 
 # Public repositories
-clone_repository git@github.com:aozen/portfolio.git "$PROJECTS_PATH/portfolio"
-clone_repository git@github.com:aozen/aozen.git "$PROJECTS_PATH/githubreadme"
-clone_repository git@github.com:aozen/chess-board.git "$PROJECTS_PATH/chessboard"
-clone_repository git@github.com:aozen/flip-flop.git "$PROJECTS_PATH/flipflop"
-clone_repository git@github.com:aozen/tic-tac-toe.git "$PROJECTS_PATH/tictactoe"
-clone_repository git@github.com:aozen/covid-19.git "$PROJECTS_PATH/covid19"
-clone_repository git@github.com:aozen/language-detector.git "$PROJECTS_PATH/languagedetector"
-clone_repository git@github.com:aozen/astar.git "$PROJECTS_PATH/astar"
-clone_repository git@github.com:aozen/repository-design-pattern.git "$PROJECTS_PATH/repository-pattern"
+clone_repository git@github.com:aozen/portfolio.git "$HOME/Projects/portfolio"
+clone_repository git@github.com:aozen/aozen.git "$HOME/Projects/githubreadme"
+clone_repository git@github.com:aozen/chess-board.git "$HOME/Projects/chessboard"
+clone_repository git@github.com:aozen/flip-flop.git "$HOME/Projects/flipflop"
+clone_repository git@github.com:aozen/tic-tac-toe.git "$HOME/Projects/tictactoe"
+clone_repository git@github.com:aozen/covid-19.git "$HOME/Projects/covid19"
+clone_repository git@github.com:aozen/language-detector.git "$HOME/Projects/languagedetector"
+clone_repository git@github.com:aozen/astar.git "$HOME/Projects/astar"
+clone_repository git@github.com:aozen/repository-design-pattern.git "$HOME/Projects/repository-pattern"
 
 # Private repositories
-clone_repository git@github.com:aozen/filament-examples.git "$PROJECTS_PATH/filamentexamples"
-clone_repository git@github.com:aozen/IMDBer.git "$PROJECTS_PATH/imdber"
+clone_repository git@github.com:aozen/filament-examples.git "$HOME/Projects/filamentexamples"
+clone_repository git@github.com:aozen/IMDBer.git "$HOME/Projects/imdber"
 
 echo -e "\n${SUCCESS_COLOR}Cloning completed ${NO_COLOR}"
