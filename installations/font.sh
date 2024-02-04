@@ -1,23 +1,19 @@
 #!/bin/bash
-source ./.env
-source ./helper.sh
+
+source ~/.dotfiles/.env
+source ~/.dotfiles/helper.sh
 
 echo_title "INSTALL FONTS"
 
-if [[ -d "$DOTFILES_PATH/fonts" ]]; then
+if dpkg -s fonts-powerline &> /dev/null; then
     echo -e "${WARNING_COLOR}Powerline fonts are already installed${NO_COLOR}"
     exit 0
 fi
 
-git clone --quiet https://github.com/powerline/fonts.git "$DOTFILES_PATH/fonts"
-echo -e "${SUCCESS_COLOR}Powerline fonts repository cloned successfully${NO_COLOR}"
+sudo apt-get install fonts-powerline -y > /dev/null 2>&1
 
-echo "Installing powerline fonts..."
-cd "$DOTFILES_PATH/fonts" || exit
-./install.sh > /dev/null 2>&1 #./fonts/install.sh (different install.sh)
-cd - > /dev/null || exit
-
-if [[ -d "$DOTFILES_PATH/fonts" ]]; then
+# Verify installation
+if dpkg -s fonts-powerline &> /dev/null; then
     echo -e "${SUCCESS_COLOR}Powerline fonts installed successfully${NO_COLOR}"
     exit 0
 else
