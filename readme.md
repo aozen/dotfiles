@@ -56,9 +56,12 @@ mkdir -p ~/.dotfiles && wget -O- https://github.com/aozen/dotfiles/archive/refs/
 
 ## Additional Steps
 
-- After fresh zsh installation, go to `Profiles`, `Edit Profile`, `Text`. Then activate `Use built-in Powerline glyphs` via checkbox. Otherwise some icons may not display.
+- After fresh zsh installation, go to `Profiles`, `Edit Profile`, `Text`. Then activate `Use built-in Powerline glyphs` via checkbox. Otherwise some icons may not display. (Exists on nonstable version of linux. (after 22.04 right now))
+- Open linux terminal preferences. select profile. On text tab, check the custom fonts.
+- On Guake select defaul shell to /bin/zsh and select theme to "Monokai Soda"
 - Install apps manually # WIP
   - If default terminal didnt changed => `chsh -s $(which zsh)`
+  - If still same (probably will be the same) restart.
 - Custom Settings # WIP
 
 ## Remove ZSH
