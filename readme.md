@@ -35,7 +35,7 @@ mkdir -p ~/.dotfiles && wget -O- https://github.com/aozen/dotfiles/archive/refs/
     - Install zsh, oh-my-zsh and setup plugins (autosuggestions, syntax-highlighting)
     - Generate .zshrc file
     - Setup powerline fonts for ZSH Agnoster Theme
-1. Install Docker
+1. Install Docker (disabled on auto installation. can be triggered separately)
 1. Install Redis
 1. Install Nodejs
 1. Install Mongodb

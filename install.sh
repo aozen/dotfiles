@@ -21,11 +21,7 @@ mkdir -p $HOME/Projects $HOME/Screenshots $HOME/Personal $HOME/Scripts $HOME/dev
 echo -e "${SUCCESS_COLOR}Necessary folders are created${NO_COLOR}"
 
 # Install main necessary packages
-sudo apt-get install ca-certificates curl gnupg gpg lsb-release software-properties-common apt-transport-https wget > /dev/null
-
-# Database Backup
-chmod +x ./dumps/mysql.sh && ./dumps/mysql.sh
-chmod +x ./dumps/mongo.sh && ./dumps/mongo.sh
+sudo apt-get install ca-certificates curl gnupg gpg lsb-release software-properties-common apt-transport-https wget -y > /dev/null
 
 # GIT
 chmod +x ./installations/git.sh && ./installations/git.sh
@@ -36,17 +32,17 @@ chmod +x ./clone.sh && ./clone.sh
 # ZSH
 chmod +x ./installations/zsh.sh && ./installations/zsh.sh
 
-# DOCKER
-chmod +x ./installations/docker.sh && ./installations/docker.sh
+# MONGODB
+chmod +x ./installations/mongodb.sh && ./installations/mongodb.sh
+
+# # DOCKER
+# chmod +x ./installations/docker.sh && ./installations/docker.sh
 
 # REDIS
 chmod +x ./installations/redis.sh && ./installations/redis.sh
 
 # NODEJS & NPM
 chmod +x ./installations/nodejs.sh && ./installations/nodejs.sh
-
-# MONGODB
-chmod +x ./installations/mongodb.sh && ./installations/mongodb.sh
 
 # GO
 chmod +x ./installations/go.sh && ./installations/go.sh
