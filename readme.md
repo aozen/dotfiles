@@ -78,4 +78,5 @@ sudo apt-get --purge remove zsh
 - check & copy sources.list `cp -r /etc/apt/sources.list* /path/to/backup/location`
 - copy apache folder
 - copy var/www
+- copy crontab settings `crontab -l > /tmp/crontab`
 - WIP
