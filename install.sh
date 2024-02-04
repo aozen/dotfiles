@@ -51,6 +51,9 @@ chmod +x ./installations/go.sh && ./installations/go.sh
 # VSCODE
 chmod +x ./installations/vscode.sh && ./installations/vscode.sh
 
+# GOOGLE CHROME
+chmod +x ./installations/chrome.sh && ./installations/chrome.sh
+
 # GUAKE
 chmod +x ./installations/guake.sh && ./installations/guake.sh
 
