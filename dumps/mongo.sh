@@ -1,9 +1,10 @@
-# #!/bin/bash
+#!/bin/bash
 
-source ./.env
-source ./helper.sh
+source $HOME/.dotfiles/.env
+source $HOME/.dotfiles/helper.sh
 
 echo_title "MONGODB DATABASE BACKUP"
+echo -e "$(date +"%Y-%m-%d %H:%M:%S")"
 
 if ! mongosh --username "$MONGODB_USER" --password "$MONGODB_PASSWORD" --authenticationDatabase "admin" --eval "db.adminCommand('listDatabases')" > /dev/null 2>&1; then
     echo -e "${ERROR_COLOR}Failed to connect to MongoDB. Check your MongoDB server or credentials.${NO_COLOR}"

@@ -1,9 +1,10 @@
 #!/bin/bash
 
-source ./.env
-source ./helper.sh
+source $HOME/.dotfiles/.env
+source $HOME/.dotfiles/helper.sh
 
 echo_title "MYSQL DATABASE BACKUP"
+echo -e "$(date +"%Y-%m-%d %H:%M:%S")"
 
 if ! mysql -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "show databases;" > /dev/null 2>&1; then
     echo -e "${ERROR_COLOR}Failed to connect to MySQL. Check your credentials.${NO_COLOR}"
