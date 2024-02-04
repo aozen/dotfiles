@@ -20,6 +20,9 @@ echo_title "CREATE HOME FOLDERS"
 mkdir -p $HOME/Projects $HOME/Screenshots $HOME/Personal $HOME/Scripts $HOME/devTools $HOME/devManage $HOME/Backups $HOME/go
 echo -e "${SUCCESS_COLOR}Necessary folders are created${NO_COLOR}"
 
+# Install main necessary packages
+sudo apt-get install ca-certificates curl gnupg gpg lsb-release software-properties-common apt-transport-https wget > /dev/null
+
 # Database Backup
 chmod +x ./dumps/mysql.sh && ./dumps/mysql.sh
 chmod +x ./dumps/mongo.sh && ./dumps/mongo.sh

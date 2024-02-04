@@ -11,13 +11,13 @@ if command -v mongod &> /dev/null; then
     exit 0
 fi
 
-sudo apt-get install gnupg curl > /dev/null 2>&1
-
 curl -fsSL https://pgp.mongodb.com/server-7.0.asc | \
    sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
 
 echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | \
    sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list > /dev/null
+
+sudo apt update
 
 sudo apt-get install -y mongodb-org > /dev/null 2>&1
 
