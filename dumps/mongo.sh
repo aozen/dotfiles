@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source $HOME/.dotfiles/.env
-source $HOME/.dotfiles/helper.sh
+source ~/.dotfiles/.env
+source ~/.dotfiles/helper.sh
 
 echo_title "MONGODB DATABASE BACKUP"
 echo -e "$(date +"%Y-%m-%d %H:%M:%S")"

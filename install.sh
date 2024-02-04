@@ -3,14 +3,14 @@
 echo -e "${SUCCESS_COLOR}❤️ Setting Up Started ❤️ ${NO_COLOR}\n"
 
 # Load environment variables from .env file
-source ./.env
-source ./helper.sh
+source ~/.dotfiles/.env
+source ~/.dotfiles/helper.sh
 
 # Request sudo to use further
 sudo -v
 
 # Check env
-if ! confirm "Are you in the $DOTFILES_PATH? Also if you filled .env file continue. Otherwise we have a problem"; then
+if ! confirm "Are you in the ~/.dotfiles? Also if you filled .env file continue. Otherwise we have a problem"; then
     echo -e "${ERROR_COLOR}Skipping Installation. Exiting... Fill .env and come back...${NO_COLOR}"
     exit 1
 fi

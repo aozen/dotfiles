@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source ./.env
-source ./helper.sh
+source ~/.dotfiles/.env
+source ~/.dotfiles/helper.sh
 
 echo_title "CLONE PROJECTS"
 
