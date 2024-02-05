@@ -26,7 +26,7 @@ sudo apt update
 sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 echo "Downloading Docker..."
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin > /dev/null
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin > /dev/null
 
 if command -v docker &> /dev/null; then
     echo -e "${SUCCESS_COLOR}Docker installed successfully${NO_COLOR}"

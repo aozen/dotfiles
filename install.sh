@@ -21,7 +21,7 @@ mkdir -p $HOME/Projects $HOME/Screenshots $HOME/Personal $HOME/Scripts $HOME/dev
 echo -e "${SUCCESS_COLOR}Necessary folders are created${NO_COLOR}"
 
 # Install main necessary packages
-sudo apt-get install ca-certificates curl gnupg gpg lsb-release software-properties-common apt-transport-https wget -y > /dev/null
+sudo apt install ca-certificates curl gnupg gpg lsb-release software-properties-common apt-transport-https wget -y
 
 # GIT
 chmod +x ./installations/git.sh && ./installations/git.sh

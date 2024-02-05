@@ -11,7 +11,7 @@ if command -v git &> /dev/null; then
     exit 0
 fi
 
-sudo apt-get install git -y > /dev/null 2>&1
+sudo apt install git -y > /dev/null 2>&1
 
 if command -v git &> /dev/null; then
     echo -e "${SUCCESS_COLOR}Git installed successfully${NO_COLOR}"

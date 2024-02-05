@@ -17,7 +17,7 @@ echo | sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/
 
 sudo apt update
 
-sudo apt-get install code -y > /dev/null 2>&1
+sudo apt install code -y > /dev/null 2>&1
 
 if command -v code &> /dev/null; then
     echo -e "${SUCCESS_COLOR}Visual Studio Code installed successfully${NO_COLOR}"

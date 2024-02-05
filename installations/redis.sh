@@ -18,7 +18,7 @@ echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://pack
 
 sudo apt update
 
-sudo apt-get install redis -y > /dev/null 2>&1
+sudo apt install redis -y > /dev/null 2>&1
 
 if command -v redis-server &> /dev/null; then
     echo -e "${SUCCESS_COLOR}Redis installed successfully${NO_COLOR}"

@@ -20,7 +20,7 @@ echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gp
 
 sudo apt update
 
-sudo apt-get install -y mongodb-org > /dev/null 2>&1
+sudo apt install -y mongodb-org > /dev/null 2>&1
 
 if command -v mongod &> /dev/null; then
     echo -e "${SUCCESS_COLOR}MongoDB installed successfully${NO_COLOR}"

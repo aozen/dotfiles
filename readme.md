@@ -68,7 +68,7 @@ mkdir -p ~/.dotfiles && wget -O- https://github.com/aozen/dotfiles/archive/refs/
 
 ```bash
 uninstall_oh_my_zsh
-sudo apt-get --purge remove zsh
+sudo apt --purge remove zsh
 ```
 
 ## Format Checklist
