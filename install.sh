@@ -65,6 +65,9 @@ chmod +x ./installations/slack.sh && ./installations/slack.sh
 # DISCORD
 chmod +x ./installations/discord.sh && ./installations/discord.sh
 
+# STARSHIP
+chmod +x ./installations/starship.sh && ./installations/starship.sh
+
 # FONTS
 chmod +x ./installations/font.sh && ./installations/font.sh
 

@@ -42,6 +42,15 @@ else
     echo -e "${WARNING_COLOR}zsh-syntax-highlighting is already installed${NO_COLOR}"
 fi
 
+# Clone zsh-you-should-use plugin
+echo_title "ZSH YOU SHOULD USE"
+if ! [[ -d "$HOME/.dotfiles/plugins/zsh-you-should-use" ]]; then
+    git clone --quiet https://github.com/MichaelAquilina/zsh-you-should-use.git "$HOME/.dotfiles/plugins/zsh-you-should-use"
+    echo -e "${SUCCESS_COLOR}zsh-you-should-use plugin cloned successfully${NO_COLOR}"
+else
+    echo -e "${WARNING_COLOR}zsh-you-should-use is already installed${NO_COLOR}"
+fi
+
 # ZSHRC
 echo_title ".ZSHRC"
 cp ~/.zshrc /tmp/_zshrc
