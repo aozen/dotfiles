@@ -16,7 +16,7 @@ echo "$(zsh --version)"
 
 # Oh-My-Zsh
 echo_title "INSTALL Oh-My-Zsh"
-if [[ -d "$ZSH" || -d "$HOME/.oh-my-zsh" ]]; then
+if [[ -d "$HOME/.oh-my-zsh" ]]; then
     echo -e "${WARNING_COLOR}Oh-My-Zsh is already installed${NO_COLOR}"
 else
     echo "Installing OMZ..."
