@@ -8,6 +8,8 @@ echo_title "INSTALL GUAKE"
 if command -v guake &> /dev/null; then
     echo -e "${WARNING_COLOR}Guake Terminal is already installed${NO_COLOR}"
     echo $(guake --version | awk '/Guake Terminal/{print $3}')
+
+    echo -e "${WARNING_COLOR}IMPORTANT:${NO_COLOR} Set font to a Nerd Font manually (e.g. FiraCode Nerd Font) from Guake Preferences > Text"
     exit 0
 fi
 
@@ -19,6 +21,10 @@ sudo apt install guake -y > /dev/null 2>&1
 if command -v guake &> /dev/null; then
     echo -e "${SUCCESS_COLOR}Guake Terminal installed successfully${NO_COLOR}"
     echo $(guake --version | awk '/Guake Terminal/{print $3}')
+
+    echo -e "${WARNING_COLOR}NEXT STEP:${NO_COLOR}"
+    echo -e "Open Guake → Preferences → Text → Set font to: ${SUCCESS_COLOR}FiraCode Nerd Font${NO_COLOR}"
+
     exit 0
 else
     echo -e "${ERROR_COLOR}Failed to install Guake Terminal${NO_COLOR}"

@@ -1,0 +1,131 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$status\
+[](#9A348E)\
+$battery\
+$username\
+[](bg:#DA627D fg:#9A348E)\
+$directory\
+[](fg:#DA627D bg:#FCA17D)\
+$git_branch\
+$git_status\
+$git_metrics\
+$git_state\
+[](fg:#FCA17D bg:#86BBD8)\
+$golang\
+$java\
+$nodejs\
+$rust\
+[](fg:#86BBD8 bg:#06969A)\
+$docker_context\
+[](fg:#06969A bg:#33658A)\
+$time\
+$cmd_duration\
+[ ](fg:#33658A)\
+"""
+
+add_newline = false
+
+[status]
+disabled = false
+format = "$symbol "
+success_symbol = "[●](fg:#00ff00)"
+symbol = "[○](fg:#888888)"
+
+[username]
+show_always = true
+style_user = "bg:#9A348E"
+format = '[$user ]($style)'
+disabled = false
+
+[directory]
+style = "bg:#DA627D"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Order matters
+
+[docker_context]
+symbol = " "
+style = "bg:#06969A"
+format = '[ $symbol $context ]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:#FCA17D"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#FCA17D"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#86BBD8"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#33658A"
+format = '[ ♥ $time ]($style)'
+
+[battery]
+full_symbol = '🔋'
+charging_symbol = '⚡️'
+discharging_symbol = '💀'
+format = '[$symbol$percentage]($style)[  ]($style)'
+
+[[battery.display]]
+threshold = 40
+style = 'bg:#9A348E'
+
+[cmd_duration]
+min_time = 1_000
+style = "bg:#33658A"
+format = '[‼️ $duration]($style)'
+show_notifications=true
+min_time_to_notify=30_000
+show_milliseconds=true
+
+# FIX LATER
+# https://starship.rs/config/#git-state
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[🍒 PICKING](bold red)'
+rebase = '[🍑 REBASING](bold red)'
+
+[git_metrics]
+disabled=true
+
+[custom.ocpp_port]
+command = "echo VIRTUAL CHARGER OFFLINE"
+when = '''
+git rev-parse --show-toplevel 2>/dev/null | grep -q ocpp-translator \
+&& ! nc -z localhost 4200 >/dev/null 2>&1
+'''
+style = "bg:#ff0000 fg:#ffffff"
+#format = "[](fg:#33658A bg:#ff0000)[ ⚠ $output ]($style)"
+format = '[$symbol]($style)'

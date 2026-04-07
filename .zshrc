@@ -3,14 +3,9 @@
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 
 export ZSH=$HOME/.oh-my-zsh
-
 ZSH_THEME="agnoster"
-
 HIST_STAMPS="dd/mm/yyyy"
-
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting you-should-use)
-
-# Set zsh-autosuggestions color
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-you-should-use)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
@@ -20,18 +15,22 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 eval "$(starship init zsh)"
-export STARSHIP_CONFIG=~/.starship.toml
+export STARSHIP_CONFIG=~/.config/starship.toml
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *END* DEFAULT ZSHRC
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
+
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *START* SYSTEM & OPTIONS
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 
 alias crontab='EDITOR=nano /usr/bin/crontab'
-alias memoryeaters='ps aux | sort -nr -k 4 | head -10'
+alias hosts='sudo nano /etc/hosts'
+alias vhosts='sudo nano /etc/apache2/extra/httpd-vhosts.conf'
+
+alias memoryeaters='ps aux --sort=-%cpu | awk '\''{printf "%-10s %-8s %-6s %-6s %-8s %-8s %-8s %-10s %s\n", $1, $2, $3, $4, $5, $6, $7, $9, $11}'\'' | head -10'
 alias cpueaters='ps aux --sort=-%mem | awk '\''{printf "%-10s %-8s %-6s %-6s %-8s %-8s %-8s %-10s %s\n", $1, $2, $3, $4, $5, $6, $7, $9, $11}'\'' | head -10'
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
@@ -44,18 +43,13 @@ alias cpueaters='ps aux --sort=-%mem | awk '\''{printf "%-10s %-8s %-6s %-6s %-8
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 
 # better gitlog
-alias {glog, glog1}="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias glog2='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
-
-# copy personal access token key (aozen github)
-alias copytoken='echo ghp_...G | pbcopy'
-
-# copy public ssh key
-alias copykey='command cat ~/.ssh/id_ed25519.pub | pbcopy'
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *END* GIT
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
+
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *START* GOTO
@@ -79,6 +73,7 @@ alias countfile='find . -type f | wc -l'
 alias countdir='find . -type d -mindepth 1 | wc -l'
 alias sortAll='du -ah | sort -hr'
 alias sortFolders='du -h --max-depth=1 | sort -hr'
+
 du_sort() {
     if [[ "$2" == "--all" ]]; then
         sudo du -ah --max-depth=1 "$1" | sort -hr
@@ -99,17 +94,19 @@ du_sort() {
 alias checkIps="sudo grep -roE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' ./* --exclude-dir={node_modules,mongodb,cache} --exclude='*.svg' | sort | uniq -c | sort -nr"
 alias checkUrls='grep -roE "https?://[a-zA-Z0-9./?=_-]*" ./* --exclude-dir={node_modules,mongodb,cache,logs} --exclude=package.json --exclude=package-lock.json | sort | uniq -c | sort -nr'
 alias checkEmails='grep -roE --color=always "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}" ./* --exclude-dir={node_modules,mongodb,cache,logs} --exclude=package.json --exclude=package-lock.json | awk -F: '\''{print $2}'\'' | sort | uniq -c | sort -nr'
+alias checkEmails2='grep -roE --color=always "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}" ./* --exclude-dir={node_modules,mongodb,cache,logs} --exclude=package.json --exclude=package-lock.json'
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *END* FILTERING
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 
+
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *START* NETWORK
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 
-alias ip="curl ipecho.net/plain; echo"
-alias pingpong='ping -c 5 google.com'
+alias myIp="curl ipecho.net/plain; echo"
+alias pingbomb='ping -c 5 google.com'
 alias ports='sudo lsof -i'
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
@@ -126,6 +123,7 @@ alias phpstorm='open_phpstorm'
 open_phpstorm() {
     (/opt/$PHPSTORM_VERSION/bin/phpstorm.sh "$1" >/dev/null 2>&1 &) > /dev/null 2>&1
 }
+
 GOLAND_VERSION=$(ls /opt | grep GoLand)
 alias goland='open_goland'
 open_goland() {
@@ -144,9 +142,10 @@ open_goland() {
 alias weather='curl wttr.in'
 alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
 alias qr='qrencode -m 2 -t utf8 <<< "$1"'
-alias randompass='openssl rand -base64 12'
-alias hosts='sudo nano /etc/hosts'
-alias vhosts='sudo nano /etc/apache2/extra/httpd-vhosts.conf'
+alias openssl_pass='openssl rand -base64 12'
+randompass() {
+  curl -s https://gist.githubusercontent.com/aozen/5c930f2ef288a46c6cd7910ffbc515e4/raw/generatePassword.js | node - "$@"
+}
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *END* THINGS
@@ -157,16 +156,22 @@ alias vhosts='sudo nano /etc/apache2/extra/httpd-vhosts.conf'
 #                   *START* PATHS
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 
-# global laravel command. ex: laravel new test
+# Laravel
 export PATH="$PATH:$HOME/.composer/vendor/bin"
 
+# Go
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *END* PATHS
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
+
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *START* SCRIPTS
@@ -192,9 +197,13 @@ export NVM_DIR="$HOME/.nvm"
 # Load Angular CLI autocompletion.
 source <(ng completion script)
 
+# Bun completions
+[ -s "/home/ali/.bun/_bun" ] && source "/home/ali/.bun/_bun"
+
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *END* JAVASCRIPT
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
+
 
 #---------------------------------------------------------------------------------------------------------------------------------------------------#
 #                   *START* PHP
